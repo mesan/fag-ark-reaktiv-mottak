@@ -19,6 +19,11 @@
 			<artifactId>dropwizard-core</artifactId>
 			<version>${dropwizard.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.11</artifactId>
+            <version>2.4-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -84,4 +89,14 @@
 			</plugin>
 		</plugins>
 	</build>
+
+    <repositories>
+        <repository>
+            <id>akka-snapshots</id>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <url>http://repo.akka.io/snapshots/</url>
+        </repository>
+    </repositories>
 </project>
