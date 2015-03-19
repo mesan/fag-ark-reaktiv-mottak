@@ -7,4 +7,5 @@ ADD . /home
 
 WORKDIR /home/src/main/java
 
-RUN javac HelloWorld.java
+RUN mvn clean install
+
