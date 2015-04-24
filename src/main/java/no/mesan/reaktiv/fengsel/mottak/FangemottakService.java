@@ -18,22 +18,30 @@ import akka.actor.ActorSystem;
  */
 public class FangemottakService {
 
-    private final ActorRef ruter;
+    private final ActorRef fangemottak;
 
     public static void main(final String[] args) {
+        // For test
         new FangemottakService().mottaFange(123);
     }
 
     public FangemottakService() {
         final ActorSystem akka = ActorSystem.create("mottak");
 
-        ruter = akka.actorOf(FangemottakActor.props());
+        // Initialiserer actor som styrer prosess
+        fangemottak = akka.actorOf(FangemottakActor.props());
 
+        // Initialiserer actorer som utfører arbeidet
         akka.actorOf(RegistrerNavnOgNrActor.props(), REGISTRERE_NAVN_OG_NR.navn());
         akka.actorOf(RegistrerEiendelerActor.props(), REGISTRERE_EIENDELER.navn());
     }
 
+    /**
+     * Start her. Denne metoden setter i gang mottak av en fange til fengselet.
+     *
+     * @param fangenummer Unikt fangenummer.
+     */
     public void mottaFange(final Integer fangenummer) {
-        ruter.tell(new FangeMottattMelding(fangenummer), ActorRef.noSender());
+        fangemottak.tell(new FangeMottattMelding(fangenummer), ActorRef.noSender());
     }
 }

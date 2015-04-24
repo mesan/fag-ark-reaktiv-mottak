@@ -27,7 +27,7 @@ public class FangemottakActor extends AbstractActor {
                             System.out.println("FangemottakActor - " + fangeMottatt);
                             registrerNavnOgNrActor.tell(fangeMottatt, self());
                         })
-                                // Steg 2: registrere eiendeler
+                        // Steg 2: registrere eiendeler
                         .match(NavnOgNrRegistrertMelding.class, navnOgNrRegistrertMelding -> {
                             System.out.println("FangemottakActor - " + navnOgNrRegistrertMelding);
                             registrerEiendelerActor.tell(navnOgNrRegistrertMelding, self());
