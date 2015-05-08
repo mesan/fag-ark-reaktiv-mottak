@@ -15,9 +15,9 @@ public class Fange implements Serializable {
     public static final long serialVersionUID = 1;
 
     private final String navn;
-    private final Integer id;
+    private final String id;
 
-    public Fange(final String navn, final Integer id) {
+    public Fange(final String navn, final String id) {
         this.navn = navn;
         this.id = id;
     }
@@ -26,7 +26,7 @@ public class Fange implements Serializable {
         return navn;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -34,7 +34,7 @@ public class Fange implements Serializable {
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("navn", navn)
-                .append("fangenummer", id)
+                .append("id", id)
                 .toString();
     }
 }
