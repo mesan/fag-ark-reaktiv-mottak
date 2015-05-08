@@ -1,6 +1,7 @@
 package no.mesan.reaktiv.fengsel.mottak.actor;
 
 import no.mesan.reaktiv.fengsel.mottak.Fange;
+import no.mesan.reaktiv.fengsel.mottak.fangeregister.FangeregisterService;
 import no.mesan.reaktiv.fengsel.mottak.melding.FangeMottattMelding;
 import no.mesan.reaktiv.fengsel.mottak.melding.NavnOgNrRegistrertMelding;
 
@@ -16,12 +17,14 @@ import akka.japi.pf.ReceiveBuilder;
 public class RegistrerNavnOgNrActor extends AbstractActor {
 
     public RegistrerNavnOgNrActor() {
+        final FangeregisterService fangeregisterService = new FangeregisterService();
+
         receive(ReceiveBuilder
                         .match(FangeMottattMelding.class, fangeMottatt -> {
                             System.out.println("RegistrerNavnOgNrActor - Registrerer fange: " + fangeMottatt);
-                            // TODO kalle rest
-                            final Fange fange = new Fange(fangeMottatt.getFangenavn(), "123");
-                            sender().tell(new NavnOgNrRegistrertMelding(fange), self());
+
+                            final Fange lagretFange = fangeregisterService.lagreFange(fangeMottatt.getFangenavn());
+                            sender().tell(new NavnOgNrRegistrertMelding(lagretFange), self());
                         })
                         .build());
     }
