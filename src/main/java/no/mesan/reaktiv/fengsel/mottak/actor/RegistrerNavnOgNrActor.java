@@ -20,7 +20,7 @@ public class RegistrerNavnOgNrActor extends AbstractActor {
                         .match(FangeMottattMelding.class, fangeMottatt -> {
                             System.out.println("RegistrerNavnOgNrActor - Registrerer fange: " + fangeMottatt);
                             // TODO kalle rest
-                            sender().tell(new NavnOgNrRegistrertMelding(new Fange("Per", fangeMottatt.getFangenummer())), self());
+                            sender().tell(new NavnOgNrRegistrertMelding(new Fange(fangeMottatt.getFangenavn(), 123)), self());
                         })
                         .build());
     }

@@ -22,7 +22,7 @@ public class FangemottakService {
 
     public static void main(final String[] args) {
         // For test
-        new FangemottakService().mottaFange(123);
+        new FangemottakService().mottaFange("Navid Floska");
     }
 
     public FangemottakService() {
@@ -39,9 +39,9 @@ public class FangemottakService {
     /**
      * Start her. Denne metoden setter i gang mottak av en fange til fengselet.
      *
-     * @param fangenummer Unikt fangenummer.
+     * @param fangenavn Navn på ankommet fange.
      */
-    public void mottaFange(final Integer fangenummer) {
-        fangemottak.tell(new FangeMottattMelding(fangenummer), ActorRef.noSender());
+    public void mottaFange(final String fangenavn) {
+        fangemottak.tell(new FangeMottattMelding(fangenavn), ActorRef.noSender());
     }
 }

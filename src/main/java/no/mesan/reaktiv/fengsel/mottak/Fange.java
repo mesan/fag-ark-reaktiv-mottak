@@ -15,26 +15,26 @@ public class Fange implements Serializable {
     public static final long serialVersionUID = 1;
 
     private final String navn;
-    private final Integer fangenummer;
+    private final Integer id;
 
-    public Fange(final String navn, final Integer fangenummer) {
+    public Fange(final String navn, final Integer id) {
         this.navn = navn;
-        this.fangenummer = fangenummer;
+        this.id = id;
     }
 
     public String getNavn() {
         return navn;
     }
 
-    public Integer getFangenummer() {
-        return fangenummer;
+    public Integer getId() {
+        return id;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("navn", navn)
-                .append("fangenummer", fangenummer)
+                .append("fangenummer", id)
                 .toString();
     }
 }

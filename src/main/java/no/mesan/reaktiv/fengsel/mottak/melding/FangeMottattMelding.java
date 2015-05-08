@@ -14,20 +14,20 @@ public class FangeMottattMelding implements Serializable {
 
     public static final long serialVersionUID = 1;
 
-    private final Integer fangenummer;
+    private final String fangenavn;
 
-    public FangeMottattMelding(final Integer fangenummer) {
-        this.fangenummer = fangenummer;
+    public FangeMottattMelding(final String fangenavn) {
+        this.fangenavn = fangenavn;
     }
 
-    public Integer getFangenummer() {
-        return fangenummer;
+    public String getFangenavn() {
+        return fangenavn;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("fangenummer", fangenummer)
+                .append("fangenavn", fangenavn)
                 .toString();
     }
 }
