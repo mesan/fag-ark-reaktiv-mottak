@@ -15,7 +15,10 @@ public class FangeregisterService {
 
     public FangeregisterService() {
         // Går mot service fra https://github.com/mesan/fag-ark-persistering-fangeregister
-        final RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("http://localhost:49000").build();
+        final RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("http://localhost:49000")
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .build();
 
         fangeregisterRestService = restAdapter.create(FangeregisterRestService.class);
     }
