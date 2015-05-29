@@ -2,6 +2,7 @@ package no.mesan.reaktiv.fengsel.mottak.actor;
 
 import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.*;
 
+import no.mesan.reaktiv.fengsel.mottak.melding.EiendelerRegistrertMelding;
 import no.mesan.reaktiv.fengsel.mottak.melding.NavnOgNrRegistrertMelding;
 import no.mesan.reaktiv.fengsel.mottak.melding.FangeMottattMelding;
 
@@ -31,6 +32,11 @@ public class FangemottakActor extends AbstractActor {
                         .match(NavnOgNrRegistrertMelding.class, navnOgNrRegistrertMelding -> {
                             System.out.println("FangemottakActor - " + navnOgNrRegistrertMelding);
                             registrerEiendelerActor.tell(navnOgNrRegistrertMelding, self());
+                        })
+                        // Steg 3: gå til metalldetektor
+                        .match(EiendelerRegistrertMelding.class, eiendelerRegistrertMelding -> {
+                            System.out.println("FangemottakActor - " + eiendelerRegistrertMelding);
+                            // TODO
                         })
                         .build());
     }
