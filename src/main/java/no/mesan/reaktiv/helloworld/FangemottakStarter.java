@@ -2,7 +2,7 @@ package no.mesan.reaktiv.helloworld;
 
 import no.mesan.reaktiv.fengsel.mottak.FangemottakService;
 import no.mesan.reaktiv.fengsel.mottak.health.TemplateHealthCheck;
-import no.mesan.reaktiv.helloworld.resources.MottakResource;
+import no.mesan.reaktiv.fengsel.mottak.resources.MottakResource;
 
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;

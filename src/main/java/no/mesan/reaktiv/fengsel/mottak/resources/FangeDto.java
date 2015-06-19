@@ -1,4 +1,4 @@
-package no.mesan.reaktiv.helloworld.resources;
+package no.mesan.reaktiv.fengsel.mottak.resources;
 
 import javax.annotation.Nonnull;
 import javax.validation.constraints.NotNull;

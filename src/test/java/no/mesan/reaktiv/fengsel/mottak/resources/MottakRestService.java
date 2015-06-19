@@ -1,4 +1,4 @@
-package no.mesan.reaktiv.helloworld.resources;
+package no.mesan.reaktiv.fengsel.mottak.resources;
 
 import retrofit.client.Response;
 import retrofit.http.Body;

@@ -1,4 +1,4 @@
-package no.mesan.reaktiv.helloworld.resources;
+package no.mesan.reaktiv.fengsel.mottak.resources;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
