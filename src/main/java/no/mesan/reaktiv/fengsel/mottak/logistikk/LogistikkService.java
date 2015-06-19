@@ -10,6 +10,8 @@ import retrofit.RestAdapter;
 
 /**
  * Service for å jobbe med en fanges eiendeler.
+ *
+ * @author Christian Ihle
  */
 public class LogistikkService {
 

@@ -5,6 +5,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * En eiendel knyttet til en fange.
+ *
+ * @author Christian Ihle
  */
 public class Eiendel {
 

@@ -7,6 +7,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * DTO med en liste av en fanges eiendeler.
+ *
+ * @author Christian Ihle
  */
 public class EiendelListeDTO {
 
