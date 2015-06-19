@@ -42,6 +42,7 @@ public class FangemottakService {
      * @param fangenavn Navn på ankommet fange.
      */
     public void mottaFange(final String fangenavn) {
+        System.out.println("FangemottakService - Fange har ankommet mottaket: " + fangenavn);
         fangemottak.tell(new FangeMottattMelding(fangenavn), ActorRef.noSender());
     }
 }
