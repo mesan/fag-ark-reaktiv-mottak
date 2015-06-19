@@ -26,7 +26,6 @@ public class EiendelDTO {
         return tekniskBeskrivelse;
     }
 
-
     public String getBeskrivelse() {
         return beskrivelse;
     }

@@ -16,31 +16,31 @@ import io.dropwizard.setup.Environment;
  */
 public class FangemottakStarter extends Application<FangemottakConfig> {
 
-	public static void main(final String[] args) throws Exception {
-		new FangemottakStarter().run(new String[] {"server", "fangemottak.yml"});
-	}
+    public static void main(final String[] args) throws Exception {
+        new FangemottakStarter().run(new String[]{"server", "fangemottak.yml"});
+    }
 
-	@Override
-	public String getName() {
-		return "fangemottak";
-	}
+    @Override
+    public String getName() {
+        return "fangemottak";
+    }
 
-	@Override
-	public void initialize(final Bootstrap<FangemottakConfig> bootstrap) {
-		// nothing to do yet
-	}
+    @Override
+    public void initialize(final Bootstrap<FangemottakConfig> bootstrap) {
+        // nothing to do yet
+    }
 
-	@Override
-	public void run(final FangemottakConfig configuration, final Environment environment) {
-		final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
+    @Override
+    public void run(final FangemottakConfig configuration, final Environment environment) {
+        final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
-		final FangemottakService fangemottakService = new FangemottakService();
-		final MottakResource mottakResource =
-				new MottakResource(
-				configuration.getTemplate(),
-				fangemottakService);
+        final FangemottakService fangemottakService = new FangemottakService();
+        final MottakResource mottakResource =
+                new MottakResource(
+                        configuration.getTemplate(),
+                        fangemottakService);
 
-		environment.healthChecks().register("template", healthCheck);
-		environment.jersey().register(mottakResource);
-	}
+        environment.healthChecks().register("template", healthCheck);
+        environment.jersey().register(mottakResource);
+    }
 }

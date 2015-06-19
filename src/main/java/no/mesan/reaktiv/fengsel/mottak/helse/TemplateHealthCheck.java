@@ -3,6 +3,7 @@ package no.mesan.reaktiv.fengsel.mottak.helse;
 import com.codahale.metrics.health.HealthCheck;
 
 public class TemplateHealthCheck extends HealthCheck {
+
     private final String template;
 
     public TemplateHealthCheck(String template) {
