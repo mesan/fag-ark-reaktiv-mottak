@@ -1,4 +1,4 @@
-package no.mesan.reaktiv.fengsel.mottak;
+package no.mesan.reaktiv.fengsel.mottak.service;
 
 import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.REGISTRERE_EIENDELER;
 import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.REGISTRERE_NAVN_OG_NR;

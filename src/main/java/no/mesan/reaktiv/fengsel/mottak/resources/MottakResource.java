@@ -6,7 +6,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 
-import no.mesan.reaktiv.fengsel.mottak.FangemottakService;
+import no.mesan.reaktiv.fengsel.mottak.service.FangemottakService;
 
 import com.codahale.metrics.annotation.Timed;
 
