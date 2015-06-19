@@ -1,4 +1,4 @@
-package no.mesan.reaktiv.helloworld;
+package no.mesan.reaktiv.fengsel.mottak;
 
 import io.dropwizard.Configuration;
 

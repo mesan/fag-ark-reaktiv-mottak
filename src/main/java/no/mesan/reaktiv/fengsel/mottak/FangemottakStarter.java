@@ -1,6 +1,5 @@
-package no.mesan.reaktiv.helloworld;
+package no.mesan.reaktiv.fengsel.mottak;
 
-import no.mesan.reaktiv.fengsel.mottak.FangemottakService;
 import no.mesan.reaktiv.fengsel.mottak.health.TemplateHealthCheck;
 import no.mesan.reaktiv.fengsel.mottak.resources.MottakResource;
 
