@@ -17,7 +17,7 @@ import io.dropwizard.setup.Environment;
 public class FangemottakStarter extends Application<FangemottakConfig> {
 
 	public static void main(final String[] args) throws Exception {
-		new FangemottakStarter().run(new String[] {"server", "hello-world.yml"});
+		new FangemottakStarter().run(new String[] {"server", "fangemottak.yml"});
 	}
 
 	@Override
