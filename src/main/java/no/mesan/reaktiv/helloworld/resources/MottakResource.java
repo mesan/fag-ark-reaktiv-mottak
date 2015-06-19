@@ -1,16 +1,14 @@
 package no.mesan.reaktiv.helloworld.resources;
 
 import javax.validation.Valid;
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 
 import no.mesan.reaktiv.fengsel.mottak.FangemottakService;
-import no.mesan.reaktiv.helloworld.domain.Saying;
 
 import com.codahale.metrics.annotation.Timed;
-import com.google.common.base.Optional;
-
-import io.dropwizard.validation.Validated;
 
 /**
  * Rest-tjeneste for mottak av fanger
@@ -20,6 +18,7 @@ import io.dropwizard.validation.Validated;
 @Path("/mottak/")
 @Consumes(value = MediaType.APPLICATION_JSON)
 public class MottakResource {
+
     private final String template;
     private final FangemottakService fangemottakService;
 
