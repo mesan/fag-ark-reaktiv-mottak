@@ -1,4 +1,4 @@
-package no.mesan.reaktiv.fengsel.mottak.health;
+package no.mesan.reaktiv.fengsel.mottak.helse;
 
 import com.codahale.metrics.health.HealthCheck;
 
