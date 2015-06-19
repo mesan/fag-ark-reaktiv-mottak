@@ -14,24 +14,24 @@ import io.dropwizard.setup.Environment;
  * App url: http://localhost:8080//mottak/
  * Metrics url: http://localhost:8081/
  */
-public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
+public class FangemottakStarter extends Application<FangemottakConfig> {
 
 	public static void main(final String[] args) throws Exception {
-		new HelloWorldApplication().run(new String[] {"server", "hello-world.yml"});
+		new FangemottakStarter().run(new String[] {"server", "hello-world.yml"});
 	}
 
 	@Override
 	public String getName() {
-		return "hello-world";
+		return "fangemottak";
 	}
 
 	@Override
-	public void initialize(final Bootstrap<HelloWorldConfiguration> bootstrap) {
+	public void initialize(final Bootstrap<FangemottakConfig> bootstrap) {
 		// nothing to do yet
 	}
 
 	@Override
-	public void run(final HelloWorldConfiguration configuration, final Environment environment) {
+	public void run(final FangemottakConfig configuration, final Environment environment) {
 		final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
 		final FangemottakService fangemottakService = new FangemottakService();

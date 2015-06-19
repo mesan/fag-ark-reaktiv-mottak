@@ -6,7 +6,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class HelloWorldConfiguration extends Configuration {
+public class FangemottakConfig extends Configuration {
+
 	@NotEmpty
 	private String template;
 
