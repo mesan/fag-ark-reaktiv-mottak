@@ -3,7 +3,7 @@ package no.mesan.reaktiv.fengsel.mottak.logistikk;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import no.mesan.reaktiv.fengsel.mottak.Fange;
+import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
 
 import retrofit.RestAdapter;
 

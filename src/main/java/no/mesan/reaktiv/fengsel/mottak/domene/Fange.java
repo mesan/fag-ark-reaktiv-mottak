@@ -1,4 +1,4 @@
-package no.mesan.reaktiv.fengsel.mottak;
+package no.mesan.reaktiv.fengsel.mottak.domene;
 
 import java.io.Serializable;
 

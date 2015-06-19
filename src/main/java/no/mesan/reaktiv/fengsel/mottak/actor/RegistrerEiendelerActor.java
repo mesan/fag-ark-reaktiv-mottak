@@ -3,7 +3,7 @@ package no.mesan.reaktiv.fengsel.mottak.actor;
 import java.util.Arrays;
 import java.util.List;
 
-import no.mesan.reaktiv.fengsel.mottak.Fange;
+import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.Eiendel;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.LogistikkService;
 import no.mesan.reaktiv.fengsel.mottak.melding.EiendelerRegistrertMelding;

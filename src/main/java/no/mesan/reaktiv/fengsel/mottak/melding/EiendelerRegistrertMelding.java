@@ -3,7 +3,7 @@ package no.mesan.reaktiv.fengsel.mottak.melding;
 import java.io.Serializable;
 import java.util.List;
 
-import no.mesan.reaktiv.fengsel.mottak.Fange;
+import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.Eiendel;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;

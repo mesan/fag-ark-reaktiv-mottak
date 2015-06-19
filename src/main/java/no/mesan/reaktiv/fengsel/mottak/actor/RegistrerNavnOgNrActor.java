@@ -1,6 +1,6 @@
 package no.mesan.reaktiv.fengsel.mottak.actor;
 
-import no.mesan.reaktiv.fengsel.mottak.Fange;
+import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
 import no.mesan.reaktiv.fengsel.mottak.fangeregister.FangeregisterService;
 import no.mesan.reaktiv.fengsel.mottak.melding.FangeMottattMelding;
 import no.mesan.reaktiv.fengsel.mottak.melding.NavnOgNrRegistrertMelding;

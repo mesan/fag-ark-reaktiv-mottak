@@ -1,6 +1,6 @@
 package no.mesan.reaktiv.fengsel.mottak.fangeregister;
 
-import no.mesan.reaktiv.fengsel.mottak.Fange;
+import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
 
 import retrofit.RestAdapter;
 
