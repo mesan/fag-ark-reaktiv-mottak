@@ -1,4 +1,4 @@
-package no.mesan.reaktiv.fengsel.mottak.rest;
+package no.mesan.reaktiv.fengsel.mottak.dto;
 
 import javax.annotation.Nonnull;
 import javax.validation.constraints.NotNull;

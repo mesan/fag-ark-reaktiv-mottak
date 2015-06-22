@@ -11,6 +11,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import no.mesan.reaktiv.fengsel.mottak.dto.NyFangeDTO;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
