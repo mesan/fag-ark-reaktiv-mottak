@@ -1,6 +1,7 @@
 package no.mesan.reaktiv.fengsel.mottak.fangeregister;
 
 import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
+import no.mesan.reaktiv.fengsel.mottak.dto.FangeDTO;
 import no.mesan.reaktiv.fengsel.mottak.service.LogLevelVelgerService;
 
 import retrofit.RestAdapter;
