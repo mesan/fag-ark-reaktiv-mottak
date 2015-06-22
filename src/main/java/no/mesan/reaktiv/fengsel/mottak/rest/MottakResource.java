@@ -30,7 +30,7 @@ public class MottakResource {
 
     @POST
     @Timed
-    public void startFangemottak(@Valid final FangeDto fange) {
+    public void startFangemottak(@Valid final NyFangeDTO fange) {
         fangemottakService.mottaFange(fange.getFulltNavn());
     }
 }

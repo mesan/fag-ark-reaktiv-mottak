@@ -12,5 +12,5 @@ import retrofit.http.POST;
 public interface MottakRestService {
 
     @POST("/mottak/")
-    Response startFangemottak(@Body FangeDto fange);
+    Response startFangemottak(@Body NyFangeDTO fange);
 }

@@ -41,7 +41,7 @@ public class MottakResourceIntegrationTest {
 
     @Test
     public void startFangemottak() {
-        final Response response = mottakRestService.startFangemottak(new FangeDto("Arne", "Bjarne"));
+        final Response response = mottakRestService.startFangemottak(new NyFangeDTO("Arne", "Bjarne"));
 
         // 204: the server has fulfilled the request but does not need to return an entity-body
         assertEquals(204, response.getStatus());
@@ -55,7 +55,7 @@ public class MottakResourceIntegrationTest {
         for (int i = 0; i < 100; i++) {
             final String fornavn = velgTilfeldigNavn(alleFornavn);
             final String etternavn = velgTilfeldigNavn(alleEtternavn);
-            final FangeDto fange = new FangeDto(fornavn, etternavn);
+            final NyFangeDTO fange = new NyFangeDTO(fornavn, etternavn);
 
             final Response response = mottakRestService.startFangemottak(fange);
             assertEquals(204, response.getStatus());

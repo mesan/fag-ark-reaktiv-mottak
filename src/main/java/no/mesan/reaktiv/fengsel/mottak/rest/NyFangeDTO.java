@@ -8,11 +8,12 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
- * TODO
+ * Representasjon av en ny fange.
+ * Dette er en fange som ikke har fått noen id ennå.
  *
  * @author Svein Melby
  */
-public class FangeDto {
+public class NyFangeDTO {
 
     @NotBlank
     private String fornavn;
@@ -20,11 +21,11 @@ public class FangeDto {
     @NotNull
     private String etternavn;
 
-    public FangeDto() {
+    public NyFangeDTO() {
     }
 
-    public FangeDto(@Nonnull final String fornavn,
-                    @Nonnull final String etternavn) {
+    public NyFangeDTO(@Nonnull final String fornavn,
+                      @Nonnull final String etternavn) {
         this.fornavn = fornavn;
         this.etternavn = etternavn;
     }
