@@ -20,11 +20,6 @@ public class FangemottakService {
 
     private final ActorRef fangemottak;
 
-    public static void main(final String[] args) {
-        // For test
-        new FangemottakService().mottaFange("Navid Floska");
-    }
-
     public FangemottakService() {
         final ActorSystem akka = ActorSystem.create("mottak");
 
