@@ -5,6 +5,7 @@ import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.*;
 import no.mesan.reaktiv.fengsel.mottak.melding.EiendelerRegistrertMelding;
 import no.mesan.reaktiv.fengsel.mottak.melding.NavnOgNrRegistrertMelding;
 import no.mesan.reaktiv.fengsel.mottak.melding.FangeMottattMelding;
+import no.mesan.reaktiv.fengsel.mottak.repository.KontrollerteFangerRepository;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorSelection;
@@ -18,7 +19,7 @@ import akka.japi.pf.ReceiveBuilder;
  */
 public class FangemottakActor extends AbstractActor {
 
-    public FangemottakActor() {
+    public FangemottakActor(final KontrollerteFangerRepository kontrollerteFangerRepository) {
         final ActorSelection registrerNavnOgNrActor = context().actorSelection(REGISTRERE_NAVN_OG_NR.adresse());
         final ActorSelection registrerEiendelerActor = context().actorSelection(REGISTRERE_EIENDELER.adresse());
 
@@ -36,12 +37,14 @@ public class FangemottakActor extends AbstractActor {
                         // Steg 3: gå til metalldetektor
                         .match(EiendelerRegistrertMelding.class, eiendelerRegistrertMelding -> {
                             System.out.println("FangemottakActor - " + eiendelerRegistrertMelding);
-                            // TODO
+
+                            // TODO midlertidig løsning for å teste atom+rest. Skal gjøres av actor for visitering
+                            kontrollerteFangerRepository.leggTilFange(eiendelerRegistrertMelding.getFange());
                         })
                         .build());
     }
 
-    public static Props props() {
-        return Props.create(FangemottakActor.class, FangemottakActor::new);
+    public static Props props(final KontrollerteFangerRepository kontrollerteFangerRepository) {
+        return Props.create(FangemottakActor.class, kontrollerteFangerRepository);
     }
 }

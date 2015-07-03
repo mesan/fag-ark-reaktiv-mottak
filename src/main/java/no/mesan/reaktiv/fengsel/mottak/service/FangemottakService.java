@@ -7,6 +7,7 @@ import no.mesan.reaktiv.fengsel.mottak.actor.FangemottakActor;
 import no.mesan.reaktiv.fengsel.mottak.actor.RegistrerEiendelerActor;
 import no.mesan.reaktiv.fengsel.mottak.actor.RegistrerNavnOgNrActor;
 import no.mesan.reaktiv.fengsel.mottak.melding.FangeMottattMelding;
+import no.mesan.reaktiv.fengsel.mottak.repository.KontrollerteFangerRepository;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
@@ -20,11 +21,11 @@ public class FangemottakService {
 
     private final ActorRef fangemottak;
 
-    public FangemottakService() {
+    public FangemottakService(final KontrollerteFangerRepository kontrollerteFangerRepository) {
         final ActorSystem akka = ActorSystem.create("mottak");
 
         // Initialiserer actor som styrer prosess
-        fangemottak = akka.actorOf(FangemottakActor.props());
+        fangemottak = akka.actorOf(FangemottakActor.props(kontrollerteFangerRepository));
 
         // Initialiserer actorer som utfører arbeidet
         akka.actorOf(RegistrerNavnOgNrActor.props(), REGISTRERE_NAVN_OG_NR.navn());

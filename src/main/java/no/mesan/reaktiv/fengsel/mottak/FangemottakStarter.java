@@ -4,6 +4,7 @@ import no.mesan.reaktiv.fengsel.mottak.helse.TemplateHealthCheck;
 import no.mesan.reaktiv.fengsel.mottak.rest.AtomResource;
 import no.mesan.reaktiv.fengsel.mottak.rest.MottakResource;
 import no.mesan.reaktiv.fengsel.mottak.service.FangemottakService;
+import no.mesan.reaktiv.fengsel.mottak.repository.KontrollerteFangerRepository;
 
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -36,13 +37,15 @@ public class FangemottakStarter extends Application<FangemottakConfig> {
     public void run(final FangemottakConfig configuration, final Environment environment) {
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
 
-        final FangemottakService fangemottakService = new FangemottakService();
+        final KontrollerteFangerRepository kontrollerteFangerRepository = new KontrollerteFangerRepository();
+
+        final FangemottakService fangemottakService = new FangemottakService(kontrollerteFangerRepository);
         final MottakResource mottakResource =
                 new MottakResource(
                         configuration.getTemplate(),
                         fangemottakService);
 
-        final AtomResource atomResource = new AtomResource();
+        final AtomResource atomResource = new AtomResource(kontrollerteFangerRepository);
 
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(mottakResource);

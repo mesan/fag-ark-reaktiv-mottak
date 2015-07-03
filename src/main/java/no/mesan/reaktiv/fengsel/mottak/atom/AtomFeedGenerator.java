@@ -28,11 +28,11 @@ public class AtomFeedGenerator {
         return feed;
     }
 
-    public Entry leggTilElement(final Feed feed, final String tittel) {
+    public Entry leggTilElement(final Feed feed, final String tittel, final String id) {
         final Entry entry = new Entry();
 
         entry.setTitle(tittel);
-        entry.setId(genererUnikId());
+        entry.setId(id);
         entry.setUpdated(lagDato());
 
         leggElementIFeed(feed, entry);
