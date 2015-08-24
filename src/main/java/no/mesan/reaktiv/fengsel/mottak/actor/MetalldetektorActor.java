@@ -4,6 +4,8 @@ import akka.actor.AbstractActor;
 import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;
 import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
+import no.mesan.reaktiv.fengsel.mottak.dto.FangeDTO;
+import no.mesan.reaktiv.fengsel.mottak.isolat.IsolatService;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.Eiendel;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.LogistikkService;
 import no.mesan.reaktiv.fengsel.mottak.melding.EiendelerRegistrertMelding;
@@ -23,6 +25,7 @@ import java.util.Random;
 public class MetalldetektorActor extends AbstractActor {
 
     public MetalldetektorActor() {
+        IsolatService isolatService = new IsolatService();
         final LogistikkService logistikkService = new LogistikkService();
 
         receive(ReceiveBuilder
@@ -37,8 +40,11 @@ public class MetalldetektorActor extends AbstractActor {
                             // Eiendeler blir fratatt fange og sendt til logistikkservice
                             logistikkService.registrerEiendeler(fange, kontraband);
 
+                            int alvorlighetsgrad = getAlvorlighetsgrad(kontraband, 3);
+
                             // Si i fra slik at man vet om fangen skal i isolat eller ikke
-                            sender().tell(new MetalldetektorMelding(fange, getAlvorlighetsgrad(kontraband, 3)), self());
+                            isolatService.settIIsolat(new FangeDTO(fange.getId(), fange.getNavn()), alvorlighetsgrad);
+                            sender().tell(new MetalldetektorMelding(fange, alvorlighetsgrad), self());
                         })
                         .build());
     }
