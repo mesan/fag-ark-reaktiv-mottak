@@ -8,7 +8,8 @@ package no.mesan.reaktiv.fengsel.mottak.actor;
 public enum Actorer {
 
     REGISTRERE_NAVN_OG_NR("RegistrerNavnOgNrActor", "/user/RegistrerNavnOgNrActor"),
-    REGISTRERE_EIENDELER("RegistrerEiendelerActor", "/user/RegistrerEiendelerActor");
+    REGISTRERE_EIENDELER("RegistrerEiendelerActor", "/user/RegistrerEiendelerActor"),
+    METALLDETEKTOR("MetalldetektorActor", "/user/MetalldetektorActor");
 
     private final String navn;
     private final String adresse;

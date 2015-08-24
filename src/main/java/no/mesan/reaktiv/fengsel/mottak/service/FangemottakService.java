@@ -1,17 +1,15 @@
 package no.mesan.reaktiv.fengsel.mottak.service;
 
-import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.REGISTRERE_EIENDELER;
-import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.REGISTRERE_NAVN_OG_NR;
-
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
 import no.mesan.reaktiv.fengsel.mottak.actor.FangemottakActor;
+import no.mesan.reaktiv.fengsel.mottak.actor.MetalldetektorActor;
 import no.mesan.reaktiv.fengsel.mottak.actor.RegistrerEiendelerActor;
 import no.mesan.reaktiv.fengsel.mottak.actor.RegistrerNavnOgNrActor;
 import no.mesan.reaktiv.fengsel.mottak.melding.FangeMottattMelding;
-import no.mesan.reaktiv.fengsel.mottak.melding.NavnOgNrRegistrertMelding;
 import no.mesan.reaktiv.fengsel.mottak.repository.KontrollerteFangerRepository;
 
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
+import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.*;
 
 /**
  * Service som setter i gang mottaksregistrering av en fange.
@@ -31,7 +29,7 @@ public class FangemottakService {
         // Initialiserer actorer som utfører arbeidet
         akka.actorOf(RegistrerNavnOgNrActor.props(), REGISTRERE_NAVN_OG_NR.navn());
         akka.actorOf(RegistrerEiendelerActor.props(), REGISTRERE_EIENDELER.navn());
-        //akka.actorOf(NavnOgNrRegistrertMelding.props()),
+        akka.actorOf(MetalldetektorActor.props(), METALLDETEKTOR.navn());
     }
 
     /**

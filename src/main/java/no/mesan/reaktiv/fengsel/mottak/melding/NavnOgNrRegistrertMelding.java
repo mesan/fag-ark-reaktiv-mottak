@@ -1,11 +1,10 @@
 package no.mesan.reaktiv.fengsel.mottak.melding;
 
-import java.io.Serializable;
-
 import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import java.io.Serializable;
 
 /**
  * Melding for å si fra at en fange er registrert med navn og nummer.
@@ -32,4 +31,5 @@ public class NavnOgNrRegistrertMelding implements Serializable {
                 .append("fange", fange)
                 .toString();
     }
+
 }
