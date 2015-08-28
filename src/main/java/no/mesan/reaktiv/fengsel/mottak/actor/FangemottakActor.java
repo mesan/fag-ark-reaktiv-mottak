@@ -22,6 +22,7 @@ public class FangemottakActor extends AbstractActor {
     public FangemottakActor(final KontrollerteFangerRepository kontrollerteFangerRepository) {
         final ActorSelection registrerNavnOgNrActor = context().actorSelection(REGISTRERE_NAVN_OG_NR.adresse());
         final ActorSelection registrerEiendelerActor = context().actorSelection(REGISTRERE_EIENDELER.adresse());
+        final ActorSelection metalldetektorActor = context().actorSelection(METALLDETEKTOR.adresse());
 
         receive(ReceiveBuilder
                         // Steg 1: registrere navn og nummer
@@ -37,9 +38,7 @@ public class FangemottakActor extends AbstractActor {
                         // Steg 3: gå til metalldetektor
                         .match(EiendelerRegistrertMelding.class, eiendelerRegistrertMelding -> {
                             System.out.println("FangemottakActor - " + eiendelerRegistrertMelding);
-
-                            // TODO midlertidig løsning for å teste atom+rest. Skal gjøres av actor for visitering
-                            kontrollerteFangerRepository.leggTilFange(eiendelerRegistrertMelding.getFange());
+                            metalldetektorActor.tell(eiendelerRegistrertMelding);
                         })
                         .build());
     }

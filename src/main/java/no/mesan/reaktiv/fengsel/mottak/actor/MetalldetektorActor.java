@@ -29,7 +29,7 @@ public class MetalldetektorActor extends AbstractActor {
         final LogistikkService logistikkService = new LogistikkService();
 
         receive(ReceiveBuilder
-                        .match(NavnOgNrRegistrertMelding.class, fangeRegistrert -> {
+                        .match(EiendelerRegistrertMelding.class, fangeRegistrert -> {
                             System.out.println("Metalldetektor for: " + fangeRegistrert);
 
                             final Fange fange = fangeRegistrert.getFange();
@@ -43,8 +43,14 @@ public class MetalldetektorActor extends AbstractActor {
                             int alvorlighetsgrad = getAlvorlighetsgrad(kontraband, 3);
 
                             // Si i fra slik at man vet om fangen skal i isolat eller ikke
-                            isolatService.settIIsolat(new FangeDTO(fange.getId(), fange.getNavn()), alvorlighetsgrad);
-                            sender().tell(new MetalldetektorMelding(fange, alvorlighetsgrad), self());
+                            if (alvorlighetsgrad > 0) {
+	                            isolatService.settIIsolat(new FangeDTO(fange.getId(), fange.getNavn()), alvorlighetsgrad);
+	                            sender().tell(new MetalldetektorMelding(fange, alvorlighetsgrad), self());
+                            } else {
+                                // Atom/rest
+                                //kontrollerteFangerRepository.leggTilFange(eiendelerRegistrertMelding.getFange());
+                            }
+
                         })
                         .build());
     }
