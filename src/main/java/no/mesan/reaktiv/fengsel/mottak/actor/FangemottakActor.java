@@ -1,16 +1,15 @@
 package no.mesan.reaktiv.fengsel.mottak.actor;
 
-import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.*;
-
-import no.mesan.reaktiv.fengsel.mottak.melding.EiendelerRegistrertMelding;
-import no.mesan.reaktiv.fengsel.mottak.melding.NavnOgNrRegistrertMelding;
-import no.mesan.reaktiv.fengsel.mottak.melding.FangeMottattMelding;
-import no.mesan.reaktiv.fengsel.mottak.repository.KontrollerteFangerRepository;
-
 import akka.actor.AbstractActor;
 import akka.actor.ActorSelection;
 import akka.actor.Props;
 import akka.japi.pf.ReceiveBuilder;
+import no.mesan.reaktiv.fengsel.mottak.melding.EiendelerRegistrertMelding;
+import no.mesan.reaktiv.fengsel.mottak.melding.FangeMottattMelding;
+import no.mesan.reaktiv.fengsel.mottak.melding.NavnOgNrRegistrertMelding;
+import no.mesan.reaktiv.fengsel.mottak.repository.KontrollerteFangerRepository;
+
+import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.*;
 
 /**
  * Actor som har ansvar for å styre hele prosessen rundt fangemottak.
@@ -38,7 +37,7 @@ public class FangemottakActor extends AbstractActor {
                         // Steg 3: gå til metalldetektor
                         .match(EiendelerRegistrertMelding.class, eiendelerRegistrertMelding -> {
                             System.out.println("FangemottakActor - " + eiendelerRegistrertMelding);
-                            metalldetektorActor.tell(eiendelerRegistrertMelding);
+                            metalldetektorActor.tell(eiendelerRegistrertMelding, self());
                         })
                         .build());
     }

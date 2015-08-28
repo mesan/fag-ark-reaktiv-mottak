@@ -10,7 +10,6 @@ import no.mesan.reaktiv.fengsel.mottak.logistikk.Eiendel;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.LogistikkService;
 import no.mesan.reaktiv.fengsel.mottak.melding.EiendelerRegistrertMelding;
 import no.mesan.reaktiv.fengsel.mottak.melding.MetalldetektorMelding;
-import no.mesan.reaktiv.fengsel.mottak.melding.NavnOgNrRegistrertMelding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,7 +47,7 @@ public class MetalldetektorActor extends AbstractActor {
 	                            sender().tell(new MetalldetektorMelding(fange, alvorlighetsgrad), self());
                             } else {
                                 // Atom/rest
-                                //kontrollerteFangerRepository.leggTilFange(eiendelerRegistrertMelding.getFange());
+                                //kontrollerteFangerRepository.leggTilFange(fangeRegistrert.getFange());
                             }
 
                         })
