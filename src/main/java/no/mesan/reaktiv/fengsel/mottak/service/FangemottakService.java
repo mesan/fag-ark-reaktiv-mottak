@@ -2,12 +2,16 @@ package no.mesan.reaktiv.fengsel.mottak.service;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 import no.mesan.reaktiv.fengsel.mottak.actor.FangemottakActor;
 import no.mesan.reaktiv.fengsel.mottak.actor.MetalldetektorActor;
 import no.mesan.reaktiv.fengsel.mottak.actor.RegistrerEiendelerActor;
 import no.mesan.reaktiv.fengsel.mottak.actor.RegistrerNavnOgNrActor;
 import no.mesan.reaktiv.fengsel.mottak.melding.FangeMottattMelding;
 import no.mesan.reaktiv.fengsel.mottak.repository.KontrollerteFangerRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.*;
 
@@ -17,6 +21,8 @@ import static no.mesan.reaktiv.fengsel.mottak.actor.Actorer.*;
  * @author Christian Ihle
  */
 public class FangemottakService {
+
+    private final Logger logger = LoggerFactory.getLogger(FangemottakService.class);
 
     private final ActorRef fangemottak;
 
@@ -38,7 +44,7 @@ public class FangemottakService {
      * @param fangenavn Navn på ankommet fange.
      */
     public void mottaFange(final String fangenavn) {
-        System.out.println("FangemottakService - Fange har ankommet mottaket: " + fangenavn);
+        logger.info("Fange har ankommet mottaket: {}", fangenavn);
         fangemottak.tell(new FangeMottattMelding(fangenavn), ActorRef.noSender());
     }
 }

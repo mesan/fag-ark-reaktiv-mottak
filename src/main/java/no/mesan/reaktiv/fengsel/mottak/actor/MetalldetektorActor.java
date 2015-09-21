@@ -2,6 +2,8 @@ package no.mesan.reaktiv.fengsel.mottak.actor;
 
 import akka.actor.AbstractActor;
 import akka.actor.Props;
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
 import akka.japi.pf.ReceiveBuilder;
 import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
 import no.mesan.reaktiv.fengsel.mottak.dto.FangeDTO;
@@ -23,13 +25,15 @@ import java.util.Random;
  */
 public class MetalldetektorActor extends AbstractActor {
 
+    private final LoggingAdapter log = Logging.getLogger(getContext().system(), this);
+
     public MetalldetektorActor() {
         IsolatService isolatService = new IsolatService();
         final LogistikkService logistikkService = new LogistikkService();
 
         receive(ReceiveBuilder
                         .match(EiendelerRegistrertMelding.class, fangeRegistrert -> {
-                            System.out.println("Metalldetektor for: " + fangeRegistrert);
+                            log.info("Metalldetektor for: {}", fangeRegistrert);
 
                             final Fange fange = fangeRegistrert.getFange();
 

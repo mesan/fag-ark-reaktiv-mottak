@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
 import no.mesan.reaktiv.fengsel.mottak.service.LogLevelVelgerService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import retrofit.RestAdapter;
 
 /**
@@ -14,6 +16,8 @@ import retrofit.RestAdapter;
  * @author Christian Ihle
  */
 public class LogistikkService {
+
+    private final Logger logger = LoggerFactory.getLogger(LogistikkService.class);
 
     private final LogistikkRestService logistikkRestService;
 
@@ -38,8 +42,8 @@ public class LogistikkService {
 
         final EiendelListeDTO eiendelListe = new EiendelListeDTO(eiendelDTOer);
 
-        System.out.println(String.format("LogistikkService - Sender %s sine eiendeler til logistikk rest-tjeneste: %s",
-                                         fange, eiendelListe));
+        logger.info("Sender {} sine eiendeler til logistikk rest-tjeneste: {}",
+                                         fange, eiendelListe);
         logistikkRestService.leggTilEiendeler(fange.getId(), eiendelListe);
     }
 }

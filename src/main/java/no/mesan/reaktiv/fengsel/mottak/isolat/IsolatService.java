@@ -7,6 +7,8 @@ import no.mesan.reaktiv.fengsel.mottak.logistikk.EiendelDTO;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.EiendelListeDTO;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.LogistikkRestService;
 import no.mesan.reaktiv.fengsel.mottak.service.LogLevelVelgerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import retrofit.RestAdapter;
 import retrofit.http.Path;
 
@@ -17,6 +19,8 @@ import java.util.stream.Collectors;
  * Service for å sette en fange i isolat.
  */
 public class IsolatService {
+
+    private final Logger logger = LoggerFactory.getLogger(IsolatService.class);
 
     private final IsolatRestService isolatRestService;
 
@@ -34,8 +38,8 @@ public class IsolatService {
 
     public void settIIsolat(FangeDTO fange,
                                  Integer isoleringstid) {
-        System.out.println(String.format("IsolatService - Sender %s isolat rest-tjeneste i antall dager: %s",
-                                         fange, isoleringstid));
+        logger.info("Sender {} isolat rest-tjeneste i antall dager: {}",
+                                         fange, isoleringstid);
         isolatRestService.settIIsolat(fange, isoleringstid, "http://vg.no");
     }
 }

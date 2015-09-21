@@ -3,6 +3,8 @@ package no.mesan.reaktiv.fengsel.mottak.actor;
 import java.util.Arrays;
 import java.util.List;
 
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
 import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.Eiendel;
 import no.mesan.reaktiv.fengsel.mottak.logistikk.LogistikkService;
@@ -20,12 +22,14 @@ import akka.japi.pf.ReceiveBuilder;
  */
 public class RegistrerEiendelerActor extends AbstractActor {
 
+    private final LoggingAdapter log = Logging.getLogger(getContext().system(), this);
+
     public RegistrerEiendelerActor() {
         final LogistikkService logistikkService = new LogistikkService();
 
         receive(ReceiveBuilder
                         .match(NavnOgNrRegistrertMelding.class, fangeRegistrert -> {
-                            System.out.println("RegistrerEiendelerActor - Registrerer fange: " + fangeRegistrert);
+                            log.info("Registrerer eiendeler: {}", fangeRegistrert);
 
                             final Fange fange = fangeRegistrert.getFange();
                             final List<Eiendel> eiendeler = genererEiendeler();

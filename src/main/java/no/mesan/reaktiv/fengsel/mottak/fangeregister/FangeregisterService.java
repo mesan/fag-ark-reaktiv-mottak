@@ -4,6 +4,8 @@ import no.mesan.reaktiv.fengsel.mottak.domene.Fange;
 import no.mesan.reaktiv.fengsel.mottak.dto.FangeDTO;
 import no.mesan.reaktiv.fengsel.mottak.service.LogLevelVelgerService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import retrofit.RestAdapter;
 
 /**
@@ -14,6 +16,8 @@ import retrofit.RestAdapter;
 public class FangeregisterService {
 
     private final FangeregisterRestService fangeregisterRestService;
+
+    private final Logger logger = LoggerFactory.getLogger(FangeregisterService.class);
 
     public FangeregisterService() {
         final LogLevelVelgerService logLevelVelgerService = new LogLevelVelgerService();
@@ -30,8 +34,9 @@ public class FangeregisterService {
     public Fange lagreFange(final String fangenavn) {
         final FangeDTO fangeTilSending = new FangeDTO(fangenavn, null);
 
-        System.out.println("FangeregisterService - Registrerer fange i fangeregister rest-tjeneste: " + fangeTilSending);
+        logger.info("Registrerer fange i fangeregister rest-tjeneste: {}", fangeTilSending);
         final FangeDTO opprettetFange = fangeregisterRestService.opprettFange(fangeTilSending);
+        logger.info("Fange registrert ok i fangeregister rest-tjeneste: {}", opprettetFange);
 
         return new Fange(opprettetFange.getNavn(), opprettetFange.getId());
     }
