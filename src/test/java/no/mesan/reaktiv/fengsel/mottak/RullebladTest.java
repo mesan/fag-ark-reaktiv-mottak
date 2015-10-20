@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 import static org.joox.JOOX.*;
 
@@ -17,15 +18,15 @@ public class RullebladTest {
 
         // voldsforbrytere som er ustabile bør holdes unna vanlige fanger
         $(document).find("rulleblad")
-                .filter(ctx -> $(ctx).children("dommer").children("dom").attr("type").equals("vold"))
-                .filter(ctx -> $(ctx).children("psyke").content().equals("ustabil"))
-                .append("<avdeling>farlig</avdeling>"); // "append" legger på dette for hver voldsforbryter
+                   .filter(ctx -> $(ctx).children("dommer").children("dom").attr("type").equals("vold"))
+                   .filter(ctx -> $(ctx).children("psyke").content().equals("ustabil"))
+                   .append("<avdeling>farlig</avdeling>"); // "append" legger på dette for hver voldsforbryter
 
         // sexualforbrytere får bo sammen med ustabile voldsmenn: de trenger noe å avreagere på?
         $(document).find("dom")
-                .filter(ctx -> $(ctx).attr("type").equals("sexovergrep"))
-                .parent().parent()
-                .append("<avdeling>farlig</avdeling>");
+                   .filter(ctx -> $(ctx).attr("type").equals("sexovergrep"))
+                   .parent()
+                   .after("<avdeling>farlig</avdeling>");
 
         // Restrerende fordeles annenhver på avdeling A og avdeling B
         Match resten = $(document).find("rulleblad")
@@ -33,8 +34,17 @@ public class RullebladTest {
 
         resten.filter(even()).append("<avdeling>A</avdeling>");
 
-        resten.filter(odd()).append("\n<avdeling>B</avdeling>");
+        resten.filter(odd()).append("<avdeling>B</avdeling>");
 
         System.out.println($(document).toString());
+
+        String alleA = $(document).find("rulleblad")
+                .filter(ctx -> $(ctx).children("avdeling").content().equals("A"))
+                .map(ctx -> $(ctx).attr("id"))
+                .stream()
+                .collect(Collectors.joining(";"));
+
+        //sendTilAvdelingA(alleA);
+        System.out.println(alleA);
     }
 }
